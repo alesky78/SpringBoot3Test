@@ -1,0 +1,43 @@
+#spring enable logging
+debug: true
+#trace: true
+
+
+
+logging:
+    file:
+      name: log-test.log
+      #path
+    level:
+      #OFF << FATAL << ERROR << WARN << INFO << DEBUG << TRACE
+      #root: TRACE
+      org.springframework.transaction.interceptor: TRACE
+      org.springframework.security: DEBUG
+
+
+spring:
+  
+ datasource:
+   url: jdbc:h2:mem:testdb;DB_CLOSE_ON_EXIT=FALSE
+   driverClassName: org.h2.Driver
+   data: data.sql   
+   username: sa
+   password: sa 
+ 
+ jpa:
+   defer-datasource-initialization: true	#create the schema before to load the data.sql 
+   hibernate:
+     ddl-auto: create-drop
+   properties:
+     hibernate:
+       dialect: org.hibernate.dialect.H2Dialect
+       format_sql: true
+   show-sql: true
+
+#custom properties
+test:
+  integration.rest:
+            user: admin
+            pwd: admin
+
+ 

@@ -1,0 +1,38 @@
+server:
+  port : 8080 
+
+logging:
+    file:
+      name: log-app.log
+      #path
+    level:
+      #OFF << FATAL << ERROR << WARN << INFO << DEBUG << TRACE
+      #root: TRACE
+      org.springframework.transaction.interceptor: TRACE
+      org.springframework.security: DEBUG
+    logback:
+      rollingpolicy.clean-history-on-start      
+
+
+spring:
+    
+ main:
+   web-application-type: servlet
+ 
+ datasource:
+   url: jdbc:postgresql://127.0.0.1:5432/springboot-test
+   username: admin
+   password: admin 
+ 
+ jpa:
+   hibernate:
+     ddl-auto: create-drop
+   properties:
+     hibernate:
+       dialect: org.hibernate.dialect.PostgreSQLDialect
+       format_sql: true
+   show-sql: true
+
+
+
+ 

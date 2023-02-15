@@ -1,0 +1,42 @@
+################
+Unit test and DB
+################
+strategy to enable unit test with DB access
+ - H2 in memory application.yaml in test/resource overwrite the properties
+ - use data.sql to initialize the DB values
+ - put attention to the sequences when you introduce data manualy or not augmented then in the data.sql initialize wiht the correct value 
+
+https://www.baeldung.com/spring-testing-separate-data-source
+https://www.baeldung.com/spring-boot-h2-database
+
+
+##########################
+Exception in rest services
+##########################
+there are two strategy:
+ - @ControllerAdvice extending ResponseEntityExceptionHandler since spring 3
+ - use the ResponseStatusException  since spring 5
+https://www.baeldung.com/exception-handling-for-rest-with-spring
+
+##########################
+Transaction declarative
+##########################
+spring documentation: https://docs.spring.io/spring-framework/docs/current/reference/html/data-access.html#spring-data-tier
+determinare se le transazioni sono attive nel log https://www.baeldung.com/spring-transaction-active
+
+
+##########################
+Spring security
+##########################
+https://www.baeldung.com/spring-boot-security-autoconfiguration
+
+@PreAuthorize creare una annotazione ad hock per configuare @PreAuthorize https://stackoverflow.com/questions/57247649/multiple-roles-using-preauthorize
+@PreAuthorize per un ruolo -->  @PreAuthorize("hasRole('ADMIN')")
+@PreAuthorize per piu ruoli --> @PreAuthorize("hasAnyRole('ADMIN','DB-ADMIN')")
+@PreAuthorize per authority --> ("hasAuthority('VIEWER')")	
+@PreAuthorize per ruoli e authority -->@PreAuthorize("hasRole('ROLE_ADMIN') or hasAuthority('CREATE_POST')")
+
+tutorial completo (26:50 come salvare gli user nel DB) https://www.youtube.com/watch?v=R76S0tfv36w&t=700s
+
+basic authentication video che funziona implementato in 30 secondi! https://www.youtube.com/watch?v=mkdVgx0ylpU
+https://www.baeldung.com/spring-security-basic-authentication
