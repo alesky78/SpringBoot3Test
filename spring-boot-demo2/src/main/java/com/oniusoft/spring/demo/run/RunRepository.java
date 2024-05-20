@@ -1,35 +1,19 @@
 package com.oniusoft.spring.demo.run;
 
-import jakarta.annotation.PostConstruct;
-import org.springframework.stereotype.Repository;
-
-import java.time.LocalDateTime;
-import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-@Repository
-public class RunRepository {
+public interface RunRepository {
 
-    private List<Run> runs = new ArrayList<>();
+    List<Run> findAll();
 
-    @PostConstruct
-    private void init() {
-        runs.add(new Run(1,"prima corsa", LocalDateTime.now(),LocalDateTime.now().plus(3, ChronoUnit.HOURS), Location.INDOOR));
-        runs.add(new Run(2,"seconda corsa", LocalDateTime.now(),LocalDateTime.now().plus(3, ChronoUnit.HOURS), Location.INDOOR));
-        runs.add(new Run(3,"terza corsa", LocalDateTime.now(),LocalDateTime.now().plus(3, ChronoUnit.HOURS), Location.OUTDOOR));
-    }
+    Optional<Run> findById(Long id);
 
-    public Optional<Run> findById(int id) {
-        return runs.stream().filter(run -> run.id() == id ).findFirst();
-    }
+    Run save(Run entity);
 
-    List<Run> findAll() {
-        return runs;
-    }
+    void deleteById(Long id);
 
-    public void create(Run run) {
-        runs.add(run);
-    }
+    long count();
+
+    List<Run> findByLocation(String location);
 }
